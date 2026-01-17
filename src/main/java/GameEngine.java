@@ -6,34 +6,21 @@ public class GameEngine {
     private int target;
     private int attempts;
     private boolean gameWon;
-<<<<<<< HEAD
+
 
     private boolean gameOver;
-
-=======
-<<<<<<< HEAD
     private boolean userQuit;
-=======
     private boolean hintsEnabled;
->>>>>>> e494470 (Add hint system to show proximity after 3 attempts)
->>>>>>> dev
 
     public GameEngine(int min, int max) {
         this.min = min;
         this.max = max;
         this.attempts = 0;
         this.gameWon = false;
-<<<<<<< HEAD
 
         this.gameOver = false;
-
-=======
-<<<<<<< HEAD
         this.userQuit = false;
-=======
         this.hintsEnabled = true;
->>>>>>> e494470 (Add hint system to show proximity after 3 attempts)
->>>>>>> dev
         reset();
     }
 
@@ -49,37 +36,27 @@ public class GameEngine {
         if (guess == target) {
             gameWon = true;
             return new GuessResult(true, "Correct! You guessed it in " + attempts + " attempts.", attempts);
-<<<<<<< HEAD
         } else if (guess < target) {
             return new GuessResult(false, "Too low! Try a higher number.", attempts);
         } else {
             return new GuessResult(false, "Too high! Try a lower number.", attempts);
-=======
-<<<<<<< HEAD
         } else if (attempts >= MAX_ATTEMPTS) {
             gameOver = true;
             return new GuessResult(false, "Game Over! You've used all " + MAX_ATTEMPTS + " attempts. The number was " + target + ".", attempts);
         } else {
             int remaining = MAX_ATTEMPTS - attempts;
-=======
         } else {
             String hint = getHint(guess);
->>>>>>> dev
             GuessResult result;
             if (guess < target) {
                 result = new GuessResult(false, "Too low!", attempts);
             } else {
                 result = new GuessResult(false, "Too high!", attempts);
             }
-<<<<<<< HEAD
             result.setRemainingAttempts(remaining);
             return result;
->>>>>>> e367776 (Implement max attempts logic and game over condition)
-=======
             result.setHint(hint);
             return result;
->>>>>>> e494470 (Add hint system to show proximity after 3 attempts)
->>>>>>> dev
         }
     }
 
